@@ -6,9 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 
 @Table(name="users")
@@ -18,33 +16,29 @@ import java.util.Set;
 @Getter
 @Setter
 public class User {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String address;
-    private String company_name;
-    private Date created_at;
-    private String created_by;
+    private String companyName;
+    private Date createdAt;
+    private String createdBy;
     private String email;
     private String name;
     private String occupation;
     private String password;
-    private String phone_number;
+    private String phoneNumber;
     private int status;
     private String surname;
-    private String tc_number;
-    private Date updated_at;
-    private String updated_by;
-    private String user_name;
-    private boolean is_admin;
+    private String tcNumber;
+    private Date updatedAt;
+    private String updatedBy;
+    private String userName;
+    private boolean isAdmin;
 
-    @OneToOne(orphanRemoval = true)
-    @JoinColumn(name = "reset_key",referencedColumnName = "key")
-    private Password_reset_key password_reset_key;
-
-    @ManyToMany
-    @JoinTable(name = "users_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "roles_id"))
-    private Set<Role> roles = new LinkedHashSet<>();
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usersRole",
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "roleId"))
+    private Collection<Role> roles = new ArrayList<>();
 
 }
