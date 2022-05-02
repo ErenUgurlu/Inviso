@@ -36,9 +36,9 @@ public class User {
     private boolean isAdmin;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "usersRole",
-            joinColumns = @JoinColumn(name = "userId"),
-            inverseJoinColumns = @JoinColumn(name = "roleId"))
+    @JoinTable(name = "users_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles = new ArrayList<>();
 
 }
