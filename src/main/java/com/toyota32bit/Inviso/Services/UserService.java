@@ -7,6 +7,7 @@ import com.toyota32bit.Inviso.Entities.User;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,14 +30,14 @@ public class UserService implements IUserService, UserDetailsService {
 
    @Override
 
-    public User saveUser(User user) {
+    public User saveUser(@NotNull User user) {
         logger.info("Saving new user {} to the database",user.getName());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
     @Override
-    public Role saveRole(Role role) {
+    public Role saveRole(@NotNull Role role) {
         logger.info("Saving new role {} to the database", role.getRoleName());
         return roleRepository.save(role);
     }
@@ -60,7 +61,7 @@ public class UserService implements IUserService, UserDetailsService {
         logger.info("Fetching the all users");
         return userRepository.findAll();
     }
-    //kullanıcya rollerrin bir role olduğunu burada söylüyoruz
+    //UserDetail servisindeki methodu implemente ediyoruz kullanıcya rollerrin bir role olduğunu burada söylüyoruz
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
        User user = userRepository.findByUserName(username);
