@@ -27,7 +27,7 @@ public class User {
     private String occupation;
     private String password;
     private String phoneNumber;
-    private int status;
+    private boolean status;
     private String surname;
     private String tcNumber;
     private Date updatedAt;

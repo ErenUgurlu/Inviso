@@ -13,6 +13,8 @@ public interface IUserService {
     Role saveRole(Role role);
     @PreAuthorize("hasAnyRole('ADMIN','SUPERVISOR')")
     void addRoleToUser(String username, String roleName);
+    @PreAuthorize("hasAnyRole('ADMIN','SUPERVISOR')")
+    void deleteUser(String username);
     User getUser(String username);
     List<User> getUsers();
 }

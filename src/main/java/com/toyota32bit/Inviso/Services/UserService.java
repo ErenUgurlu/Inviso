@@ -29,7 +29,6 @@ public class UserService implements IUserService, UserDetailsService {
     private final PasswordEncoder passwordEncoder;
 
    @Override
-
     public User saveUser(@NotNull User user) {
         logger.info("Saving new user {} to the database",user.getName());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -61,6 +60,13 @@ public class UserService implements IUserService, UserDetailsService {
         logger.info("Fetching the all users");
         return userRepository.findAll();
     }
+    @Override
+    public void deleteUser(String username){
+       User user = userRepository.findByUserName(username);
+       user.setStatus(false);
+       userRepository.save(user);
+    }
+
     //UserDetail servisindeki methodu implemente ediyoruz kullanıcya rollerrin bir role olduğunu burada söylüyoruz
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
