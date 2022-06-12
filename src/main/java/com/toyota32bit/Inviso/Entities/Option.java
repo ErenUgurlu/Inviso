@@ -5,25 +5,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Table(name="form_component_validation")
+@Table(name="option")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Form_component_validation {
+public class Option {
+
     @Id
     private Long id;
-    private String  error_message;
+    private String name;
+    private String key;
+    private String orderNumber;
     private String value;
-    private int type;
-
-
-
-    @ManyToOne
-    @JoinColumn(name = "form_component_id")
-    private Form_component form_component;
-
+    private Integer optionTypeId;
 }

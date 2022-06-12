@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -25,7 +26,7 @@ public class UserRepositoryTest {
     @Test
     public void itShouldFindUserWithUsername() {
         //when
-        User user = new User(null,"temp","32Bit", Date.from(Instant.now()),"DEFAULT","temp","temp","temp","123456","+9011122223366",true,"temp","11111111111", Date.from(Instant.now()),"DEFAULT","temp",true,new ArrayList<>());
+        User user = new User(null,"temp","32Bit", LocalDate.now().toString(),"DEFAULT","temp","temp","temp","123456","+9011122223366",true,"temp","11111111111", LocalDate.now().toString(),"DEFAULT","temp",true,new ArrayList<>());
         User savedUser = userRepository.save(user);
         /* when */
         User foundUser = userRepository.findByUserName("temp");

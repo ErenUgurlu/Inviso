@@ -11,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -35,7 +35,7 @@ public class InvisoApplication {
 			userService.saveRole(new Role(null,"REPORTER","R"));
 			userService.saveRole(new Role(null,"USER","U"));
 
-			userService.saveUser(new User(null,"sirintepe mah. pasasoylu sk. 25/7","32Bit", Date.from(Instant.now()),"DEFAULT","erentrugurlu@gmail.com","Eren","BackendDeveloper","123456","+905533312028",true,"Ugurlu","36692280490", Date.from(Instant.now()),"DEFAULT","eugurlu",true,new ArrayList<>()));
+			userService.saveUser(new User(null,"sirintepe mah. pasasoylu sk. 25/7","32Bit", LocalDate.now().toString(),"DEFAULT","erentrugurlu@gmail.com","Eren","BackendDeveloper","123456","+905533312028",true,"Ugurlu","36692280490", LocalDate.now().toString(),"DEFAULT","eugurlu",true,new ArrayList<>()));
 
 			userService.addRoleToUser("eugurlu","ADMIN");
 		};

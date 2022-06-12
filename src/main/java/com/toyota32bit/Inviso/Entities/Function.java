@@ -6,29 +6,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 
-@Table(name="user_application")
+@Table(name="function")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class User_application {
+public class Function {
+
     @Id
     private Long id;
-    private Date created_at;
-    private String created_by;
-    private boolean status;
-    private Date updated_at;
-    private String updated_by;
+    private String description;
+    private String functionDetail;
 
     @ManyToOne
     @JoinColumn(name = "application_id")
     private Application application;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 
 }

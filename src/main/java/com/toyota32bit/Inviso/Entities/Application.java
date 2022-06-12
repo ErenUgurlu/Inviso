@@ -8,7 +8,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Table(name="application")
 @Entity
@@ -19,16 +19,15 @@ import java.util.Date;
 public class Application {
     @Id
     private Long id;
-    private Date created_at;
-    private String created_by;
+    private String createdAt;
+    private String createdBy;
     private String description;
     private String name;
-    private String shor_name;
-    private Date updated_at;
-    private String updated_by;
-    private String version_number;
+    private String shortName;
+    private String updatedAt;
+    private String updatedBy;
+    private String versionNumber;
     private String logo;
-    private boolean status;
-    private int form_type;
+    private Integer formType;
 
 }

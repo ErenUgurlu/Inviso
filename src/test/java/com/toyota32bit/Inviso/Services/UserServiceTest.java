@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -41,7 +42,7 @@ class UserServiceTest {
     @Test
     void saveUser() {
         //given
-        User user = new User(null,"temp","32Bit", Date.from(Instant.now()),"DEFAULT","temp","temp","temp","123456","+9011122223366",true,"temp","11111111111", Date.from(Instant.now()),"DEFAULT","temp",true,new ArrayList<>());
+        User user = new User(null,"temp","32Bit", LocalDate.now().toString(),"DEFAULT","temp","temp","temp","123456","+9011122223366",true,"temp","11111111111", LocalDate.now().toString(),"DEFAULT","temp",true,new ArrayList<>());
         //when
         underTest.saveUser(user);
         //then
@@ -72,7 +73,7 @@ class UserServiceTest {
     void addRoleToUser() {
         //Given
         Role role = new Role(null,"TEMP","tmp");
-        User user = new User(null,"temp","32Bit", Date.from(Instant.now()),"DEFAULT","temp","temp","temp","123456","+9011122223366",true,"temp","11111111111", Date.from(Instant.now()),"DEFAULT","temp",true,new ArrayList<>());
+        User user = new User(null,"temp","32Bit", LocalDate.now().toString(),"DEFAULT","temp","temp","temp","123456","+9011122223366",true,"temp","11111111111", LocalDate.now().toString(),"DEFAULT","temp",true,new ArrayList<>());
         roleRepository.save(role);
         userRepository.save(user);
         //when
@@ -85,7 +86,7 @@ class UserServiceTest {
     @Disabled   //repositoryler mock olarak kullanıldığı için getUser çalışırken user null olarak alıyor bu da NULL exeption fırlatıyor
     void getUser() {
         //given
-        User user = new User(null,"temp","32Bit", Date.from(Instant.now()),"DEFAULT","temp","temp","temp","123456","+9011122223366",true,"temp","11111111111", Date.from(Instant.now()),"DEFAULT","temp",true,new ArrayList<>());
+        User user = new User(null,"temp","32Bit", LocalDate.now().toString(),"DEFAULT","temp","temp","temp","123456","+9011122223366",true,"temp","11111111111", LocalDate.now().toString(),"DEFAULT","temp",true,new ArrayList<>());
         userRepository.save(user);
         //then
         assertThat(underTest.getUser(user.getUserName())).isEqualTo(user.getUserName());
